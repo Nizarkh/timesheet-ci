@@ -15,6 +15,7 @@ public class Mission implements Serializable {
 
 	private static final long serialVersionUID = -5369734855993305723L;
 //modif commentaire pour tester git
+	//modif commentaire2 pour tester git
 	// Auto Increment 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
