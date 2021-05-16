@@ -29,7 +29,7 @@ public class UserServiceImplTest {
 		public void testRetrieveAllUsers() {
 			List<User> listUsers = us.retrieveAllUsers(); 
 			// if there are 7 users in DB : 
-			Assert.assertEquals(15, listUsers.size());
+			Assert.assertEquals(3, listUsers.size());
 		}
 		
 		
@@ -46,15 +46,16 @@ public class UserServiceImplTest {
 		public void testModifyUser() throws ParseException   {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date d = dateFormat.parse("2015-03-23");
-			User u = new User(5L, "Mayssa122222222", "Mayssa", d, Role.INGENIEUR); 
+			//User u = new User(5L, "Mayssa122222222", "Mayssa", d, Role.INGENIEUR); 
+			User u = new User((long) 1, "Mayssa122222222", "Mayssa", d, Role.INGENIEUR);
 			User userUpdated  = us.updateUser(u); 
 			Assert.assertEquals(u.getLastName(), userUpdated.getLastName());
 		}
 	
 		@Test
 		public void testRetrieveUser() {
-			User userRetrieved = us.retrieveUser("1"); 
-			Assert.assertEquals(1L, userRetrieved.getId().longValue());
+			User userRetrieved = us.retrieveUser("2"); 
+			Assert.assertEquals(2, userRetrieved.getId().longValue());
 		}
 		
 		@Test
