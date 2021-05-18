@@ -23,7 +23,7 @@ public class ContratImpl implements IContratService{
 	}
 
 	public List<Contrat> getAllContrat() {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 

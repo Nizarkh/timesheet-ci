@@ -2,8 +2,6 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
-
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;

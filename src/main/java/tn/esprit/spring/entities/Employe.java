@@ -8,12 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 
 
 @Entity
@@ -31,7 +34,7 @@ public class Employe implements Serializable{
 	private String email;
 	private boolean actif;
 	private String password;
-	//private Employe authenticatedUser ;
+
 	@Enumerated(EnumType.ORDINAL)
 	Role role;
 	
@@ -39,11 +42,11 @@ public class Employe implements Serializable{
 	private	Contrat contrat ;
 	
 	//ManyToMany  Employe* * Mission
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private	Set<Mission> missions;
 	
 	//ManyToMany  Employe* * Departement
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private	Set<Departement> departements;
 
 	public Employe() {

@@ -29,7 +29,6 @@ public class Contrat {
 
 	public Contrat() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Contrat(int reference, Date dateDebut, String typeContrat, float salaire) {

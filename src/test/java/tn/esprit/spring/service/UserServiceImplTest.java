@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +47,7 @@ public class UserServiceImplTest {
 		@Test
 		public void testModifyUser() throws ParseException   {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date d = dateFormat.parse("2015-03-23");
-			//User u = new User(5L, "Mayssa122222222", "Mayssa", d, Role.INGENIEUR); 
+			Date d = dateFormat.parse("2015-03-23"); 
 			User u = new User((long) 1, "Mayssa122222222", "Mayssa", d, Role.INGENIEUR);
 			User userUpdated  = us.updateUser(u); 
 			Assert.assertEquals(u.getLastName(), userUpdated.getLastName());
@@ -59,9 +60,10 @@ public class UserServiceImplTest {
 		}
 		
 		@Test
+		//@Before
 		public void testDeleteUser() {
-			us.deleteUser("3");
-			Assert.assertNull(us.retrieveUser("3"));
+			us.deleteUser("6");
+			Assert.assertNull(us.retrieveUser("6"));
 		}
 		
 		// 5 tests unitaires  

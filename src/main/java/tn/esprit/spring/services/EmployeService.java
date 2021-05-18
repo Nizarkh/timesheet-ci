@@ -1,8 +1,10 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
-
+import java.util.Optional;
 import java.util.Set;
+
+import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import tn.esprit.spring.repository.EmployeRepository;
 
 
 @Service
+//@Transactional
 public class EmployeService implements IEmployeService{
 	
 	@Autowired
@@ -93,14 +96,19 @@ public class EmployeService implements IEmployeService{
 	
 	@Override
 	public String getEmployePrenomById(int employeId) {
-		return employeRepository.findById( employeId).get().getPrenom();
+		Optional<Employe> value = employeRepository.findById(employeId);
+		if(value.isPresent()){
+		return value.get().getPrenom();
+		}
+		return null;
+	
 	}
 
 
 
 	@Override
 	public Employe authenticate(String login, String password) {
-		// TODO Auto-generated method stub
+	
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
 	}
 
@@ -131,15 +139,15 @@ public class EmployeService implements IEmployeService{
 		return employes;	
 	}
 	@Override
-	public Employe getEmployeByID(int employeId) {
-		
+	public Employe getEmployeByID(int employeId) {	
+
 		Employe employe = employeRepository.findById(employeId).orElse(null);
-		//employe.getDepartements().clear();
+		if (employe != null)
+		{
 		employe.getDepartements().clear();
-		//employe.setDepartements(null);
 		employe.getMissions().clear();
 		employe.getContrat().setEmploye(null);
-		
+		}
 	return employe ;
 	}
 
@@ -202,7 +210,7 @@ public class EmployeService implements IEmployeService{
 
 	@Override
 	public List<Departement> getDepartementByEmployeId(int employeId) {
-		List<Departement> deps = (List<Departement>) employeRepository.getDepartementByEmployeIdJPQL(employeId);
+		List<Departement> deps =  employeRepository.getDepartementByEmployeIdJPQL(employeId);
 		for(Departement e : deps){
 			e.setEmployes(null);
 			e.setMissions(null);
