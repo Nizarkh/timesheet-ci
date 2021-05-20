@@ -38,7 +38,7 @@ public class Departement {
 	public Departement() {
 		
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public Departement(String name) {
 		super();

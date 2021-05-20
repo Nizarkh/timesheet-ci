@@ -51,7 +51,7 @@ public class Employe implements Serializable{
 
 	public Employe() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
